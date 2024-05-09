@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mindarThree = new MindARThree({
       container: document.body,
       imageTargetSrc: "./assets/targets/cromaVideo.mind",
+      uiLoading: "#scanning-overlay",
     });
     const { renderer, scene, camera } = mindarThree;
 
@@ -100,6 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
         while (o.parent && !o.userData.clickable) {
           o = o.parent;
         }
+
+        if (o.userData.clickable) window.showLoadingScreen();
 
         if (o.userData.clickable) {
           window.location.href = "https://dl.osunio.com/tbCg";
